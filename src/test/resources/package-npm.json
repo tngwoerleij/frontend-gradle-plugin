@@ -9,6 +9,10 @@
   ],
   "dependencies": {
   },
+  "devDependencies": {
+    "@antora/cli": "^2.3.4",
+    "@antora/site-generator-default": "^2.3.4"
+  },
   "scripts": {
     "another-script": "node -v && npm -v && echo 'Another frontend script executed' && npm run check",
     "assemble": "echo 'Frontend assembled'",
@@ -17,6 +21,8 @@
     "lint": "echo 'Frontend linted'",
     "publish": "echo 'Frontend published'",
     "start": "echo 'Frontend started and stopped'",
-    "test": "echo 'Frontend tested'"
+    "test": "echo 'Frontend tested'",
+    "doc-ko": "antora generate antora-playbook.yml --to-dir build/docs/ --clean",
+    "doc-ok": "node -v"
   }
 }

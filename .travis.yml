@@ -54,19 +54,20 @@ matrix:
         - sudo rm -f /usr/local/bin/yarn
       script:
         - echo SCRIPT
-        - ./gradlew build jacocoTestReport --console=plain
-        - sonar-scanner
+        - ./gradlew test --tests org.siouan.frontendgradleplugin.infrastructure.gradle.NpmTaskTypeWithExitCodeFuncTest
+#        - ./gradlew build jacocoTestReport --console=plain
+#        - sonar-scanner
 
-    - os: osx
-      osx_image: xcode9.4
-      before_install:
-        - echo BEFORE_INSTALL
-        # Travis - Mac OS: Node.js is already installed plus other libraries
-        - brew uninstall node
-        - rm -fr $NVM_DIR
-        - rm -f /usr/local/bin/npm /usr/local/bin/npx
+#    - os: osx
+#      osx_image: xcode9.4
+#      before_install:
+#        - echo BEFORE_INSTALL
+#        # Travis - Mac OS: Node.js is already installed plus other libraries
+#        - brew uninstall node
+#        - rm -fr $NVM_DIR
+#        - rm -f /usr/local/bin/npm /usr/local/bin/npx
 
-    - os: windows
-      env:
-        # Travis - Windows: disable Defender that slows the build and caching.
-        - NO_WIN_DEFENDER=$(curl "${GRAVIS_HOME}/.disable-windows-defender.sh" --output .no-defender.sh && . .no-defender.sh)
+#    - os: windows
+#      env:
+#        # Travis - Windows: disable Defender that slows the build and caching.
+#        - NO_WIN_DEFENDER=$(curl "${GRAVIS_HOME}/.disable-windows-defender.sh" --output .no-defender.sh && . .no-defender.sh)
