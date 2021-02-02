@@ -78,6 +78,16 @@ class ResolveNodeDistributionUrlTest {
     }
 
     @Test
+    void shouldReturnFullDownloadUrlWhenResolvingUrlWithMacOsAndJvmArchIsAarch64()
+        throws UnsupportedPlatformException, MalformedURLException {
+        assertThat(usecase
+            .execute(
+                new DistributionDefinition(PlatformFixture.aDefaultPlatform("Aarch64", "Mac OS X"), VERSION, URL_ROOT,
+                    URL_PATH_PATTERN))
+            .toString()).isEqualTo("https://foo.bar/dist/v3.5.2-linux-arm64.tar.gz");
+    }
+
+    @Test
     void shouldReturnFullDownloadUrlWhenResolvingUrlWithMacOsAndJreArchEqualToPPC()
         throws UnsupportedPlatformException, MalformedURLException {
         assertThat(usecase

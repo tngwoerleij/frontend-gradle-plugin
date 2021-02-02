@@ -33,6 +33,12 @@ class PlatformTest {
     }
 
     @Test
+    void shouldReturnTrueWhenJvmArchContains_aarch64() {
+        assertThat(
+            PlatformFixture.aDefaultPlatform("_Aarch64_", SystemUtils.getSystemOsName()).is64BitsArch()).isTrue();
+    }
+
+    @Test
     void shouldReturnTrueWhenJvmArchContains_ppc() {
         assertThat(PlatformFixture.aDefaultPlatform("_PPC_", SystemUtils.getSystemOsName()).is64BitsArch()).isTrue();
     }
@@ -40,6 +46,11 @@ class PlatformTest {
     @Test
     void shouldReturnTrueWhenJvmArchContains_sparc() {
         assertThat(PlatformFixture.aDefaultPlatform("_Sparc_", SystemUtils.getSystemOsName()).is64BitsArch()).isTrue();
+    }
+
+    @Test
+    void shouldReturnTrueWhenJvmArchIsArm64() {
+        assertThat(PlatformFixture.aDefaultPlatform("_Aarch64_", SystemUtils.getSystemOsName()).isArm64BitsArch()).isTrue();
     }
 
     @Test

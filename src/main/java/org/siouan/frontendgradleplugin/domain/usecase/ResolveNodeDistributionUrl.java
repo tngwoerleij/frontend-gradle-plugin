@@ -46,6 +46,11 @@ public class ResolveNodeDistributionUrl implements DistributionUrlResolver {
     private static final String LINUX_64_ARCH = "linux-x64";
 
     /**
+     * Architecture ID for an Aarch64/ARM64 architecture.
+     */
+    private static final String LINUX_ARM_64_ARCH = "linux-arm64";
+
+    /**
      * Architecture ID for a 64 bits MacOS O/S.
      */
     private static final String MACOS_64_ARCH = "darwin-x64";
@@ -92,7 +97,7 @@ public class ResolveNodeDistributionUrl implements DistributionUrlResolver {
             } else if (platform.isLinuxOs()) {
                 extension = LINUX_64_ARCH;
             } else if (platform.isMacOs()) {
-                extension = MACOS_64_ARCH;
+                extension = platform.isArm64BitsArch() ? LINUX_ARM_64_ARCH : MACOS_64_ARCH;
             } else {
                 extension = null;
             }
